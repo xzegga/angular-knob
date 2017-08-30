@@ -1,0 +1,1 @@
+export {Ng2KnobDirective} from './ng2-knob.directive';

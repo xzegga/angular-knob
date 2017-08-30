@@ -1,12 +1,12 @@
 # ng2-knob
 ng-knob for Angular and TypeScript with D3v4
-Angular 2 directive to Knob component powered by d3.js (without jQuery)
+Angular 4 directive to Knob component powered by d3.js (without jQuery)
 
 Features
 -------
 - very easy to implement
 - without jQuery dependencies
-- powered by d3.js
+- powered by d3.js v4
 - configurable minimum, maximum values and step
 - animated
 - great ability to configure
