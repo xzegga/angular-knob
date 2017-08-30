@@ -1,5 +1,5 @@
 {
-  "name": "angular-knob",
+  "name": "angular2-knob",
   "version": "1.0.0",
   "description": "ng-knob for Angular 4 and TypeScript with D3v4",
   "main": "index.js",
