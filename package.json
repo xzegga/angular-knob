@@ -3,11 +3,23 @@
   "version": "1.0.0",
   "description": "ng-knob for Angular 4 and TypeScript with D3v4",
   "main": "index.js",
-  "repository": "https://github.com/xzegga/ng2-knob.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xzegga/ng2-knob.git"
+  },
   "author": "Raul escamilla <raul.escamilla@asesoriait.com>",
   "license": "MIT",
   "dependencies": {
     "@types/d3-selection": "1.1.0",
     "d3": "^4.10.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/xzegga/ng2-knob/issues"
+  },
+  "homepage": "https://github.com/xzegga/ng2-knob#readme",
+  "devDependencies": {},
+  "keywords": [
+    "Angular2",
+    "knob"
+  ]
 }

@@ -36,7 +36,6 @@ $ bower install ng2-knob --save
 
 ###### HTML:
 ```html
-<div ui-knob [value]="value" [label]="label"
-         [options]="donutOptions"></div>
+<div ui-knob [value]="value" [options]="options"></div>
 
 ```
