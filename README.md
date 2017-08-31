@@ -2,6 +2,9 @@
 ng-knob for Angular and TypeScript with D3v4
 Angular 4 directive to Knob component powered by d3.js (without jQuery)
 
+
+![screenshot](https://raw.githubusercontent.com/xzegga/angular2-knob/master/angular2-knob.png)
+
 Features
 -------
 - very easy to implement
@@ -50,4 +53,43 @@ import { KnobModule } from "angular2-knob";
   bootstrap: [AppComponent]
 })
 
+```
+
+Options example in a simple component:
+```
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent{
+  knOptions = {
+    readOnly: true,
+    subText: {
+      enabled: true,
+      text: 'Overall',
+      color: '#000000',
+      fontFamily: 'Roboto',
+      font: '14',
+      fontWeight: 'bold',
+      offset: 7
+    },
+    unit: '%',
+    fontSize: '32',
+    fontWeigth: '700',
+    fontFamily: 'Roboto',
+    textColor: '#000000',
+    trackWidth: 19,
+    barWidth: 20,
+    trackColor: '#D8D8D8',
+    barColor: '#FF6F17',
+    size: 140,
+    valueformat: 'percent',
+    value: 0,
+    max: 100
+  }
+  value = 45; 
+}
 ```
