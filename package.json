@@ -1,6 +1,6 @@
 {
   "name": "angular2-knob",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Angular 4 directive for Knob component powered by d3.js v4 without jQuery dependencies",
   "main": "dist/bundles/angular2-knob.umd.js",
   "scripts": {

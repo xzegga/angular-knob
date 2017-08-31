@@ -1,6 +1,5 @@
 # angular2-knob
-ng-knob for Angular and TypeScript with D3v4
-Angular 4 directive to Knob component powered by d3.js (without jQuery)
+Angular 4 directive for Knob component using d3.js v4 without jQuery dependencies
 
 
 ![screenshot](https://raw.githubusercontent.com/xzegga/angular2-knob/master/angular2-knob.png)
