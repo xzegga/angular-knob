@@ -1,32 +1,39 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-      "outDir": "dist",
-      "baseUrl": "",
-      "sourceMap": true,
-      "declaration": true,
-      "moduleResolution": "node",
-      "module": "es2015",
-      "experimentalDecorators": true,
-      "target": "es5",
-      "typeRoots": [
-        "node_modules/@types"
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "module": "es2015",
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "target": "es5",
+    "types": [
+      "d3"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "@angular/core": [
+        "node_modules/@angular/core"
       ],
-      "paths": {
-            "@angular/core": ["node_modules/@angular/core"],
-            "rxjs/*": ["node_modules/rxjs/*"]
-      },
-      "lib": [
-        "es2015",
-        "dom"
+      "rxjs/*": [
+        "node_modules/rxjs/*"
       ]
     },
-    "files": [
-        "index.ts"
-    ],
-    "angularCompilerOptions": {
-        "strictMetadataEmit": true,
-        "genDir": "aot"
-    }
-  }
-  
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "genDir": "aot"
+  },
+  "files": [
+    "index.ts"
+  ]
+}

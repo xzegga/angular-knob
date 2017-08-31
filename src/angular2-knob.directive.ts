@@ -1,5 +1,63 @@
 import {Directive, ElementRef, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import * as d3 from 'd3';
+import 'd3-selection-multi';
+
+export interface Options {
+  skin?: {
+    type: string;
+    width: number;
+    color: string;
+    spaceWidth: number;
+  },
+  animate?: {
+    enabled: true,
+    duration: number;
+    ease: string;
+  },
+  size: number;
+  startAngle: number;
+  endAngle: number;
+  unit: string;
+  displayInput: true,
+  inputFormatter: any;
+  readOnly: boolean;
+  trackWidth: number;
+  barWidth: number;
+  trackColor: string;
+  barColor: string;
+  prevBarColor: string;
+  textColor: string;
+  barCap: number;
+  trackCap: number;
+  fontSize: string;
+  fontWeigth: string;
+  fontFamily: string;
+  subText: {
+    enabled: false,
+    text: '',
+    fontFamily: string;
+    fontWeight: string;
+    color: string;
+    font: string;
+    offset: number;
+  },
+  bgColor: string;
+  bgFull: false,
+  scale: {
+    enabled: false,
+    type: string;
+    color: string;
+    width: number;
+    quantity: number;
+    height: number;
+    spaceWidth: number;
+  },
+  step: number;
+  displayPrevious: false,
+  min: number;
+  max: number;
+  dynamicOptions: false
+};
 
 @Directive({
   selector: '[ui-knob]'
@@ -20,7 +78,7 @@ export class Ng2KnobDirective implements OnInit {
   hoopArc: any;
   changeElem: any;
   valueElem: any;
-  defaultOptions: {};
+  defaultOptions: Options;
   animations: any;
 
   constructor(private el: ElementRef) {
@@ -45,7 +103,7 @@ export class Ng2KnobDirective implements OnInit {
       endAngle: 360,
       unit: '',
       displayInput: true,
-      inputFormatter: function (v) { return v; },
+      inputFormatter: function (v: any) { return v; },
       readOnly: false,
       trackWidth: 50,
       barWidth: 50,
@@ -98,17 +156,17 @@ export class Ng2KnobDirective implements OnInit {
    */
   ngOnInit() {
     this.inDrag = false;
-    this.options = Object.assign(this.defaultOptions, this.options);
+    this.options = (<any>Object).assign(this.defaultOptions, this.options);
     this.draw();
   }
 
   /**
    * Actions when value or options change in host component
    */
-  ngOnChanges(changes) {
+  ngOnChanges(changes:any) {
 
     if (this.defaultOptions != null && changes.options != null && changes.options.currentValue != null && this.value != null) {
-      this.options = Object.assign(this.defaultOptions, changes.options.currentValue);
+      this.options = (<any>Object).assign(this.defaultOptions, changes.options.currentValue);
       this.draw();
     }
 
@@ -130,7 +188,7 @@ export class Ng2KnobDirective implements OnInit {
   /**
    *   Convert from radians to value
    */
-  radiansToValue(radians, valueEnd, valueStart, angleEnd, angleStart) {
+  radiansToValue(radians: number, valueEnd: number, valueStart: number, angleEnd: number, angleStart: number) {
     valueEnd = valueEnd || 100;
     valueStart = valueStart || 0;
     angleEnd = angleEnd || 360;
@@ -140,7 +198,7 @@ export class Ng2KnobDirective implements OnInit {
   /**
    *   Create the arc
    */
-  createArc(innerRadius, outerRadius, startAngle?, endAngle?, cornerRadius?) {
+  createArc(innerRadius: number, outerRadius: number, startAngle?: number, endAngle?: number, cornerRadius?: number): any {
     const arc = d3.arc()
       .innerRadius(innerRadius)
       .outerRadius(outerRadius)
@@ -152,7 +210,7 @@ export class Ng2KnobDirective implements OnInit {
   /**
    *   Draw the arc
    */
-  drawArc(svg, arc, label, style, click?, drag?) {
+  drawArc(svg: any, arc: any, label: string, style: any, click?: any, drag?: any) {
     const elem = svg.append('path')
       .attr('id', label)
       .attr('d', arc);
@@ -230,7 +288,7 @@ export class Ng2KnobDirective implements OnInit {
   /**
    *   Draw the arcs
    */
-  drawArcs(clickInteraction, dragBehavior) {
+  drawArcs(clickInteraction: any, dragBehavior: any) {
     const svg = d3.select(this.element)
       .append('svg')
       .attr('width', this.options.size)
@@ -241,7 +299,7 @@ export class Ng2KnobDirective implements OnInit {
     }
 
     if (this.options.displayInput) {
-      let fontSize = (this.options.size * 0.20) + 'px';
+      let fontSize: string = (this.options.size * 0.20) + 'px';
       if (this.options.fontSize !== 'auto') {
         fontSize = this.options.fontSize + 'px';
       }
@@ -252,11 +310,11 @@ export class Ng2KnobDirective implements OnInit {
       if (typeof this.options.inputFormatter === 'function') {
         v = this.options.inputFormatter(v);
       }
-      let fontFamily = '';
+      let fontFamily: string = '';
       if (this.options.fontFamily !== 'Arial') {
         fontFamily = this.options.fontFamily;
       }
-       let fontWeigth = '';
+       let fontWeigth: string = '';
       if (this.options.fontWeigth !== '400') {
         fontWeigth = this.options.fontWeigth;
       }
@@ -296,11 +354,11 @@ export class Ng2KnobDirective implements OnInit {
       }
     }
     if (this.options.scale.enabled) {
-      let radius;
-      let quantity;
+      let radius: number;
+      let quantity: number;
       let data;
-      let count = 0;
-      let angle = 0;
+      let count: number = 0;
+      let angle: number = 0;
       const startRadians = this.valueToRadians(this.options.min, this.options.max, this.options.endAngle, this.options.startAngle, this.options.min);
       const endRadians = this.valueToRadians(this.options.max, this.options.max, this.options.endAngle, this.options.startAngle, this.options.min);
       let diff = 0;
@@ -311,7 +369,7 @@ export class Ng2KnobDirective implements OnInit {
         const width = this.options.scale.width;
         radius = (this.options.size / 2) - width;
         quantity = this.options.scale.quantity;
-        const offset = radius + this.options.scale.width;
+        const offset: number = radius + this.options.scale.width;
         data = d3.range(quantity).map(function () {
           angle = (count * (endRadians - startRadians)) - (Math.PI / 2) + startRadians;
           count = count + (1 / (quantity - diff));
@@ -324,14 +382,14 @@ export class Ng2KnobDirective implements OnInit {
         svg.selectAll('circle')
           .data(data)
           .enter().append('circle')
-          .attr({
-            r: function (d: { r }) {
+          .attrs({
+            r: function (d: { r:any }) {
               return d.r;
             },
-            cx: function (d: { cx }) {
+            cx: function (d: { cx:number }) {
               return d.cx;
             },
-            cy: function (d: { cy }) {
+            cy: function (d: { cy:number }) {
               return d.cy;
             },
             fill: this.options.scale.color
@@ -353,17 +411,17 @@ export class Ng2KnobDirective implements OnInit {
         svg.selectAll('line')
           .data(data)
           .enter().append('line')
-          .attr({
-            x1: function (d: { x1 }) {
+          .attrs({
+            x1: function (d: { x1:number }) {
               return d.x1;
             },
-            y1: function (d: { y1 }) {
+            y1: function (d: { y1:number }) {
               return d.y1;
             },
-            x2: function (d: { x2 }) {
+            x2: function (d: { x2:number }) {
               return d.x2;
             },
-            y2: function (d: { y2 }) {
+            y2: function (d: { y2:number }) {
               return d.y2;
             },
             'stroke-width': this.options.scale.width,
@@ -406,7 +464,7 @@ export class Ng2KnobDirective implements OnInit {
       // that.valueElem.transition().ease(that.options.animate.ease).duration(that.options.animate.duration).tween('', function () {
       that.valueElem.transition().ease(that.animations[that.options.animate.ease]).duration(that.options.animate.duration).tween('', function () {
         const i = d3.interpolate(that.valueToRadians(that.options.startAngle, 360), that.valueToRadians(that.value, that.options.max, that.options.endAngle, that.options.startAngle, that.options.min));
-        return function (t) {
+        return function (t: any) {
           const val = i(t);
           that.valueElem.attr('d', that.valueArc.endAngle(val));
           that.changeElem.attr('d', that.changeArc.endAngle(val));
@@ -421,8 +479,8 @@ export class Ng2KnobDirective implements OnInit {
 
     function dragInteraction() {
       that.inDrag = true;
-      const x = (<d3.DragEvent> d3.event).x - (that.options.size / 2);
-      const y = (<d3.DragEvent> d3.event).y - (that.options.size / 2);
+      const x = d3.event.x - (that.options.size / 2);
+      const y = d3.event.y - (that.options.size / 2);
       interaction(x, y, false);
     }
 
@@ -434,7 +492,7 @@ export class Ng2KnobDirective implements OnInit {
       interaction(x, y, true);
     }
 
-    function interaction(x, y, isFinal) {
+    function interaction(x: any, y: any, isFinal: any) {
       const arc = Math.atan(y / x) / (Math.PI / 180);
       let delta;
 
@@ -474,7 +532,7 @@ export class Ng2KnobDirective implements OnInit {
   /**
    *   Set a value
    */
-  setValue(newValue) {
+  setValue(newValue: any) {
     if ((!this.inDrag) && this.value >= this.options.min && this.value <= this.options.max) {
       const radians = this.valueToRadians(newValue, this.options.max, this.options.endAngle, this.options.startAngle, this.options.min);
       this.value = Math.round(((~~(((newValue < 0) ? -0.5 : 0.5) + (newValue / this.options.step))) * this.options.step) * 100) / 100;

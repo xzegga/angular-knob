@@ -1,6 +1,6 @@
 {
   "name": "angular2-knob",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Angular 4 directive for Knob component powered by d3.js v4 without jQuery dependencies",
   "main": "dist/bundles/angular2-knob.umd.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "Knob",
     "Angular",
     "d3v4",
-    "angular2-knob" 
+    "angular2-knob"
   ],
   "author": "Raul Escamilla",
   "license": "MIT",
@@ -26,13 +26,14 @@
   },
   "homepage": "https://github.com/xzegga/ng2-knob#readme",
   "dependencies": {
-    "@types/d3-selection": "^1.1.0",
     "d3": "^4.10.0"
   },
   "devDependencies": {
     "@angular/compiler": "^4.3.6",
     "@angular/compiler-cli": "^4.3.6",
     "@types/d3-selection": "^1.1.0",
+    "@types/d3-selection-multi": "^1.0.6",
+    "@types/d3": "^4.10.0",
     "@angular/core": "^4.3.6",
     "rxjs": "^5.4.3",
     "zone.js": "^0.8.17",
