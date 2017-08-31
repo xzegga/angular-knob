@@ -51,7 +51,7 @@ import { KnobModule } from "angular2-knob";
 ```
 ###### HTML USE:
 ```html
-<div ui-knob [value]="value" [options]="options"></div>
+<div ui-knob [value]="value" [options]="knOptions"></div>
 
 ```
 
@@ -67,28 +67,28 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent{
   knOptions = {
     readOnly: true,
-    subText: {
-      enabled: true,
-      text: 'Overall',
-      color: '#000000',
-      fontFamily: 'Roboto',
-      font: '14',
-      fontWeight: 'bold',
-      offset: 7
-    },
+    size: 140,
     unit: '%',
+    textColor: '#000000',
     fontSize: '32',
     fontWeigth: '700',
     fontFamily: 'Roboto',
-    textColor: '#000000',
+    valueformat: 'percent',
+    value: 0,
+    max: 100
     trackWidth: 19,
     barWidth: 20,
     trackColor: '#D8D8D8',
     barColor: '#FF6F17',
-    size: 140,
-    valueformat: 'percent',
-    value: 0,
-    max: 100
+    subText: {
+      enabled: true,
+      fontFamily: 'Verdana',
+      font: '14',
+      fontWeight: 'bold',
+      text: 'Overall',
+      color: '#000000',
+      offset: 7
+    },
   }
   value = 45; 
 }
