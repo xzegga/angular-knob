@@ -1,4 +1,4 @@
-# ng2-knob
+# angular2-knob
 ng-knob for Angular and TypeScript with D3v4
 Angular 4 directive to Knob component powered by d3.js (without jQuery)
 
@@ -37,5 +37,18 @@ $ bower install ng2-knob --save
 ###### HTML:
 ```html
 <div ui-knob [value]="value" [options]="options"></div>
+
+```
+```Importing Angular Knob Module & Directive 
+import { KnobModule, Ng2KnobDirective } from "angular2-knob";
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    Ng2KnobDirective
+  ],
+  imports: [KnobModule]
+  bootstrap: [AppComponent]
+})
 
 ```
