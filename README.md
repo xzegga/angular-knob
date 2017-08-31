@@ -40,12 +40,11 @@ $ npm install angular2-knob --save
 
 ```
 ```Importing Angular Knob Module & Directive 
-import { KnobModule, Ng2KnobDirective } from "angular2-knob";
+import { KnobModule } from "angular2-knob";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    Ng2KnobDirective
+    AppComponent
   ],
   imports: [KnobModule]
   bootstrap: [AppComponent]
