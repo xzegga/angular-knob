@@ -5,11 +5,9 @@ export default {
     format: 'umd',
     moduleName: 'KnobModule',
     globals: {
-        '@angular/core': 'ng.core',
         'd3': 'd3'
     },
     external: [
-        '@angular/core',
         'd3'
     ]
 

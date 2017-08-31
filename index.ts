@@ -1,1 +1,1 @@
-export * from './src/index';
+export {KnobModule} from './src/index';
