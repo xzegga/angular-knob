@@ -2,7 +2,7 @@
 Angular 4 directive for Knob component using d3.js v4 without jQuery dependencies
 
 
-![screenshot](https://raw.githubusercontent.com/xzegga/angular2-knob/master/angular2-knob.png)
+![screenshot](https://raw.githubusercontent.com/xzegga/angular2-knob/master/assets/angular2-knob.png)
 
 Features
 -------
