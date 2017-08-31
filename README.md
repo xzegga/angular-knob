@@ -29,7 +29,7 @@ Get started
 #### Installation
 You can also use bower to install the component:
 ```bash
-$ bower install ng2-knob --save
+$ npm install angular2-knob --save
 ```
 
 #### Usage
