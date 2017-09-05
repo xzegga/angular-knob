@@ -170,7 +170,7 @@ export class Ng2KnobDirective implements OnInit {
       this.draw();
     }
 
-    if (this.defaultOptions != null && this.options != null && changes.value.currentValue != null && changes.value.previousValue != null && changes.value.currentValue !== changes.value.previousValue) {
+    if (this.defaultOptions != null && this.options != null && changes.value && changes.value.currentValue != null && changes.value.previousValue != null && changes.value.currentValue !== changes.value.previousValue) {
       this.setValue(changes.value.currentValue);
     }
   }
@@ -519,7 +519,7 @@ export class Ng2KnobDirective implements OnInit {
           that.changeElem.attr('d', that.changeArc);
         }
         if (that.options.displayInput) {
-          let v = that.label || this.value;
+          let v = that.label || that.value;
           if (typeof that.options.inputFormatter === 'function') {
             v = that.options.inputFormatter(v);
           }
