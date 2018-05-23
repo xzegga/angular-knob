@@ -1,1 +1,1 @@
-export {KnobModule} from './src/index';
+export {KnobModule} from './src/angular2-knob';
