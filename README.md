@@ -132,13 +132,22 @@ Options
 
 ### Developer 
 
+#### Setup
 ```bash
 # how to create lib project.
 ng new ngx-knob
 ng generate library knob --prefix=ngx
+```
 
-# build and publish
+#### Build
+```bash
+# bump version in `projects/knob/package.json`
 ng build knob --prod
+
+```
+
+#### Publish
+```bash
 cd dist/knob
 npm publish --access public
 ```
