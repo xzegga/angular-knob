@@ -66,7 +66,7 @@ import { KnobOptions } from "@xmlking/ngx-knob";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-  knOptions: KnobOptions = {
+  knOptions = {
     readOnly: true,
     size: 140,
     unit: '%',
