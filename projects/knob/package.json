@@ -1,0 +1,10 @@
+{
+  "name": "@xmlking/ngx-knob",
+  "description": "ngx-knob",
+  "version": "0.0.2",
+  "peerDependencies": {
+    "@angular/core": ">=5.0.0 <7.0.0",
+    "d3": "^4.13.0",
+    "d3-selection-multi": "^1.0.1"
+  }
+}
