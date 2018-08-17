@@ -20,6 +20,7 @@ Features
 - Angular 6+
 - D3.js V4
 - @types/d3-selection@^1.1.0
+- lodash.merge@4.6.1
 
 #### Browser Support
 
@@ -51,8 +52,7 @@ import { KnobModule } from "@xmlking/ngx-knob";
 ```
 ###### HTML USE:
 ```html
-<div ngxKnob [value]="value" [options]="knOptions"></div>
-
+<ngx-knob [value]="value" [options]="knOptions"></ngx-knob>
 ```
 
 ###### CONFIGURING OPTIONS IN ANGULAR COMPONENT:
@@ -137,6 +137,7 @@ Options
 # how to create lib project.
 ng new ngx-knob
 ng generate library knob --prefix=ngx
+ng generate component knob --project=knob --inline-style --inline-template --export --flat --dry-run
 ```
 
 #### Build
@@ -144,6 +145,11 @@ ng generate library knob --prefix=ngx
 # bump version in `projects/knob/package.json`
 ng build knob --prod
 
+```
+
+#### Run
+```bash
+ng serve
 ```
 
 #### Publish

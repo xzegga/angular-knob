@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { KnobDirective } from './knob.directive';
+import { KnobComponent } from './knob.component';
 
 @NgModule({
   imports: [
   ],
-  declarations: [KnobDirective],
-  exports: [KnobDirective]
+  declarations: [KnobComponent],
+  exports: [KnobComponent]
 })
 export class KnobModule { }

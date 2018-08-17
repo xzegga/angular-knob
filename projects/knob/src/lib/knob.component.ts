@@ -1,6 +1,7 @@
-import { Directive, ElementRef, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { ElementRef, OnInit, Input, Output, EventEmitter, OnChanges, Component } from '@angular/core';
 import * as d3 from 'd3';
 import 'd3-selection-multi';
+import merge from 'lodash-es/merge';
 
 export interface KnobOptions {
   skin?: {
@@ -60,10 +61,11 @@ export interface KnobOptions {
   dynamicOptions: false;
 }
 
-@Directive({
-  selector: '[ngxKnob]',
+@Component({
+  template: '',
+  selector: 'ngx-knob'
 })
-export class KnobDirective implements OnInit, OnChanges {
+export class KnobComponent implements OnInit, OnChanges {
   element: HTMLElement;
   @Input()
   value: number;
@@ -122,6 +124,7 @@ export class KnobDirective implements OnInit, OnChanges {
       fontSize: 'auto',
       fontWeigth: '400',
       fontFamily: 'Arial',
+      valueFormat: 'string',
       subText: {
         enabled: false,
         text: '',
@@ -155,20 +158,13 @@ export class KnobDirective implements OnInit, OnChanges {
     };
   }
 
-  /**
-   * Implement this interface to execute custom initialization logic after your directive's data-bound properties have been initialized.
-   * ngOnInit is called right after the directive's data-bound properties have been checked for the first time, and before any of its children have been checked.
-   * It is invoked only once when the directive is instantiated.
-   */
   ngOnInit() {
     this.inDrag = false;
-    this.options = (<any>Object).assign(this.defaultOptions, this.options);
+    // this.options = (<any>Object).assign(this.defaultOptions, this.options);
+    this.options = merge(this.defaultOptions, this.options);
     this.draw();
   }
 
-  /**
-   * Actions when value or options change in host component
-   */
   ngOnChanges(changes: any) {
     if (
       this.defaultOptions != null &&
@@ -176,7 +172,11 @@ export class KnobDirective implements OnInit, OnChanges {
       changes.options.currentValue != null &&
       this.value != null
     ) {
-      this.options = (<any>Object).assign(this.defaultOptions, changes.options.currentValue);
+      // (<any>Object).assign(this.defaultOptions, changes.options.currentValue);
+      this.options = merge(this.defaultOptions, changes.options.currentValue);
+      console.log(this.defaultOptions.subText)
+      console.log(changes.options.currentValue.subText)
+      console.log(this.options.subText)
       this.draw();
     }
 
@@ -325,6 +325,7 @@ export class KnobDirective implements OnInit, OnChanges {
    *   Draw the arcs
    */
   drawArcs(clickInteraction: any, dragBehavior: any) {
+    let fontFamily = '';
     const svg = d3
       .select(this.element)
       .append('svg')
@@ -347,7 +348,7 @@ export class KnobDirective implements OnInit, OnChanges {
       if (typeof this.options.inputFormatter === 'function') {
         v = this.options.inputFormatter(v);
       }
-      let fontFamily = '';
+
       if (this.options.fontFamily !== 'Arial') {
         fontFamily = this.options.fontFamily;
       }
@@ -375,7 +376,7 @@ export class KnobDirective implements OnInit, OnChanges {
         if (this.options.subText.font !== 'auto') {
           fontSize = this.options.subText.font + 'px';
         }
-        let fontFamily = '';
+
         if (this.options.subText.fontFamily !== 'Arial') {
           fontFamily = this.options.subText.fontFamily;
         }
@@ -383,6 +384,8 @@ export class KnobDirective implements OnInit, OnChanges {
         if (this.options.subText.fontWeight !== 'normal') {
           fontWeight = this.options.subText.fontWeight;
         }
+        console.log(this.options.size)
+        console.log(this.options.subText.offset)
         svg
           .append('text')
           .attr('class', 'sub-text')
@@ -395,10 +398,11 @@ export class KnobDirective implements OnInit, OnChanges {
           .attr(
             'transform',
             'translate(' +
-              this.options.size / 2 +
-              ', ' +
-              (this.options.size / 2 + this.options.size * 0.15 + this.options.subText.offset) +
-              ')',
+            '' +
+            this.options.size / 2 +
+            ', ' +
+            (this.options.size / 2 + this.options.size * 0.15 + this.options.subText.offset) +
+            ')',
           );
       }
     }
