@@ -20,7 +20,7 @@ Features
 - Angular 6+
 - D3.js V4
 - @types/d3-selection@^1.1.0
-- lodash.merge@4.6.1
+- lodash-es@4.17.10
 
 #### Browser Support
 
