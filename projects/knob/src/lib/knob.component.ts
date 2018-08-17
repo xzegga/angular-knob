@@ -172,11 +172,7 @@ export class KnobComponent implements OnInit, OnChanges {
       changes.options.currentValue != null &&
       this.value != null
     ) {
-      // (<any>Object).assign(this.defaultOptions, changes.options.currentValue);
       this.options = merge(this.defaultOptions, changes.options.currentValue);
-      console.log(this.defaultOptions.subText)
-      console.log(changes.options.currentValue.subText)
-      console.log(this.options.subText)
       this.draw();
     }
 
@@ -384,8 +380,6 @@ export class KnobComponent implements OnInit, OnChanges {
         if (this.options.subText.fontWeight !== 'normal') {
           fontWeight = this.options.subText.fontWeight;
         }
-        console.log(this.options.size)
-        console.log(this.options.subText.offset)
         svg
           .append('text')
           .attr('class', 'sub-text')
