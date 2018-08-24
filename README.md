@@ -1,4 +1,4 @@
-# angular-knob
+# ngx-knob
 Angular directive for Knob component using d3.js v4 without jQuery dependencies
 
 
@@ -17,9 +17,10 @@ Features
 
 #### Dependencies
 
-- Angular 2+
+- Angular 6+
 - D3.js V4
 - @types/d3-selection@^1.1.0
+- lodash-es@4.17.10
 
 #### Browser Support
 
@@ -31,14 +32,14 @@ Get started
 #### Installation
 You can also use bower to install the component:
 ```bash
-$ npm install angular2-knob --save
+$ npm install @xmlking/ngx-knob --save
 ```
 
 #### Usage
 
 ###### IMPORTING ANGULAR MODULE:
 ```Angular
-import { KnobModule } from "angular2-knob";
+import { KnobModule } from "@xmlking/ngx-knob";
 
 @NgModule({
   declarations: [
@@ -51,13 +52,13 @@ import { KnobModule } from "angular2-knob";
 ```
 ###### HTML USE:
 ```html
-<div ui-knob [value]="value" [options]="knOptions"></div>
-
+<ngx-knob [value]="value" [options]="knOptions"></ngx-knob>
 ```
 
 ###### CONFIGURING OPTIONS IN ANGULAR COMPONENT:
 ```Angular
 import { Component, OnInit } from '@angular/core';
+import { KnobOptions } from "@xmlking/ngx-knob";
 
 @Component({
   selector: 'app-root',
@@ -127,3 +128,32 @@ Options
 | min              | integer      | 0                                                                                                     | Min value (start value), only integer                                                        |
 | max              | integer      | 100                                                                                                   | Max value (end value), only integer                                                          |
 | dynamicOptions   | boolean      | false                                                                                                 | Dynamic change options (`true` or `false`)                                                   |
+
+
+### Developer 
+
+#### Setup
+```bash
+# how to create lib project.
+ng new ngx-knob
+ng generate library knob --prefix=ngx
+ng generate component knob --project=knob --inline-style --inline-template --export --flat --dry-run
+```
+
+#### Build
+```bash
+# bump version in `projects/knob/package.json`
+ng build knob --prod
+
+```
+
+#### Run
+```bash
+ng serve
+```
+
+#### Publish
+```bash
+cd dist/knob
+npm publish --access public
+```

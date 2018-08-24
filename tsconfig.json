@@ -1,39 +1,32 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "dist",
-    "baseUrl": "",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "node",
+    "declaration": false,
     "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noImplicitAny": true,
     "target": "es5",
-    "types": [
-      "d3"
-    ],
     "typeRoots": [
       "node_modules/@types"
     ],
-    "paths": {
-      "@angular/core": [
-        "node_modules/@angular/core"
-      ],
-      "rxjs/*": [
-        "node_modules/rxjs/*"
-      ]
-    },
     "lib": [
-      "es2015",
+      "es2017",
       "dom"
-    ]
-  },
-  "angularCompilerOptions": {
-    "strictMetadataEmit": true,
-    "genDir": "aot"
-  },
-  "files": [
-    "index.ts"
-  ]
+    ],
+    "paths": {
+      "@xmlking/ngx-knob": [
+        "dist/knob"
+      ],
+      "knob": [
+        "dist/knob"
+      ],
+      "knob/*": [
+        "dist/knob/*"
+      ]
+    }
+  }
 }
